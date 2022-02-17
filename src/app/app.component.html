@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-4">
+      <h1 class="text-center">Property List</h1>
+      <h2> <button class="btn btn-success" (click)="showAddPropertyForm()">Add New Property </button> </h2>
+      <table class="table table-bordered table-striped table-hover">
+        <thead> 
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">size</th>
+            <th class="text-center">Action &nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Property of Plist">
+            <td class="text-center">{{ Property.id }}</td>
+            <td class="text-center">{{ Property.Name }}</td>
+            <td class="text-center">{{ Property.Description }}</td>
+            <td class="text-center">{{ Property.size }}</td>
+            <td class="text-center">
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeProperty(Property)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    
+      <div class="mt-4">
+        <form *ngIf="PropertyForm">
+          <h2>Fill New Property details</h2>
+          <p>Name:<input type="text" name="Name" [(ngModel)]="newProperty.Name" /></p>
+          <p>Description:<input type="text" name="Description" [(ngModel)]="newProperty.Description" /></p>
+          <p>size:<input type="number" name="size" [(ngModel)]="newProperty.size" /></p>
+          <p>
+            <button type="button" class="btn btn-primary mr-2" (click)="saveProperty(newProperty)">Submit</button>
+            <button type="button" class="btn btn-warning" (click)="cancelNewProperty()">Cancel</button>
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
